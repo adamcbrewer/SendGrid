@@ -39,10 +39,12 @@ Create a new SendGrid Mail object and add your message details
 ```php
 $mail = new SendGrid\Mail();
 $mail->addTo('foo@bar.com')->
-       setFrom('me@bar.com')->
-       setSubject('Subject goes here')->
-       setText('Hello World!')->
-       setHtml('<strong>Hello World!</strong>');
+	setFrom('me@bar.com')->
+	setFromName('Your name')->
+	setReplyTo(reply@bar.com)->
+	setSubject('Subject goes here')->
+	setText('Hello World!')->
+	setHtml('<strong>Hello World!</strong>');
 ```
 
 Send it using the API of your choice (SMTP or Web)
