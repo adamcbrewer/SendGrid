@@ -20,7 +20,7 @@ class Smtp extends Api implements MailInterface
      * it from Pear
      */
     if (!class_exists('Swift')) {
-      require_once 'swift_required.php';
+      require_once dirname(__FILE__) . '/../lib/swift/swift_required.php';
     }
     call_user_func_array("parent::__construct", func_get_args());
 
@@ -72,7 +72,7 @@ class Smtp extends Api implements MailInterface
     /*
      * Since we're sending transactional email, we want the message to go to one person at a time, rather
      * than a bulk send on one message. In order to do this, we'll have to send the list of recipients through the headers
-     * but Swift still requires a 'to' address. So we'll falsify it with the from address, as it will be 
+     * but Swift still requires a 'to' address. So we'll falsify it with the from address, as it will be
      * ignored anyway.
      */
     $message->setTo($mail->getFrom());
